@@ -1,0 +1,18 @@
+﻿# фрагмент налаштування ізольованого контейнера бази даних
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: monitor-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: monitor_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_monitor_data:/var/lib/mysql
+
+volumes:
+  mysql_monitor_data:
